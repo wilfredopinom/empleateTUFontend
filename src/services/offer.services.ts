@@ -3,8 +3,11 @@ import { fetchAPI } from "../utils/FetchAPI"
 const API_URL_BASE = import.meta.env.VITE_API_URL_BASE
 
 export class OfferService {
-    static async getAll() {
-        return await fetchAPI(API_URL_BASE+'/offers')
+    static async search(title?: string) {
+        let url = API_URL_BASE+'/offers?'
+        if(title) url += 'title='+title
+
+        return await fetchAPI(url)
     }
 
     static async getById(id:number) {
