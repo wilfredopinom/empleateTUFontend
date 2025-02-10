@@ -2,10 +2,11 @@ import { ChangeEvent, useEffect, useState } from 'react'
 import Offer from '../models/Offer'
 import { OfferService } from '../services/offer.services'
 import { Link, useSearchParams } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 function OfferList() {
   const [offers, setOffers] = useState<Offer[]>()
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   //const [titleQuery, setTitleQuery] = useState(null)
 
@@ -25,11 +26,22 @@ function OfferList() {
     setQueryParams(newTitle ? {title: newTitle} : {})
   }
   
+  const handleDelete = async (id:number) => {
+    if(!window.confirm('¿Estás seguro que quieres borrar esta oferta?')) return
+
+    try{
+      await OfferService.delete(id)
+      setOffers(offers?.filter(offer => offer.id !== id))
+      toast.success('Oferta borrada correctamente!')
+    }catch(error){
+      setError(error instanceof Error ? error.message : 'Error desconocido')
+    }
+  }
+
   return (
     <div  className='text-white flex flex-col'>
       <h1>Lista de ofertas</h1>
       <Link to="/offers/new">Añadir nueva oferta</Link>
-
       
       <input value={titleQuery} onChange={handleSearchChange} placeholder='Buscar por título'/>
 
@@ -41,7 +53,7 @@ function OfferList() {
             {offer.title}
             <Link to={`/offers/${offer.id}`}>Ver</Link>
             <Link to={`/offers/edit/${offer.id}`}>Editar</Link>
-            <button>Borrar</button>
+            <button onClick={()=>handleDelete(offer.id)}>Borrar</button>
           </div>
       )}
       
