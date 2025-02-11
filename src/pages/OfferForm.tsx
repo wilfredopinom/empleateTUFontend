@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
-import Offer from '../models/offer'
+import Offer from '../models/Offer'
 import { OfferService } from '../services/offer.Service'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Temporal } from 'temporal-polyfill'
