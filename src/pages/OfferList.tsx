@@ -1,9 +1,10 @@
 import { ChangeEvent, useEffect, useState } from 'react'
-import Offer from '../models/Offer'
+
+import  Offer from '../models/offer'
+
 import { OfferService } from '../services/offer.Service'
 import { Link, useSearchParams } from 'react-router-dom'
 import toast from 'react-hot-toast'
-
 function OfferList() {
   const [offers, setOffers] = useState<Offer[]>()
   const [error, setError] = useState<string | null>(null)
