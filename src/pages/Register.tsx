@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react"
 import { registerUser } from "../services/authService"
-import { Link } from "react-router-dom";
+
 
 export default function Register() {
 

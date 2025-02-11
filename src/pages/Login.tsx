@@ -1,4 +1,4 @@
-import  { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 import { loginUser } from '../services/authService'
 
 function Login() {
