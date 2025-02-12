@@ -11,7 +11,7 @@ function OfferDetail() {
 
   useEffect(()=>{
     setLoading(true)
-    if(!id) return
+    //if(!id) return
     OfferService
       .getById(Number(id))
       .then(setOffer)
