@@ -11,12 +11,13 @@ import OffertForm from "./pages/OfferForm";
 import OfferDetail from "./pages/OfferDetail";
 import { Toaster } from "react-hot-toast";
 import Footer from "./components/Footer";
+import CategoryManager from "./pages/CategoryManager";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <div className="">
+        <div className="flex flex-col">
           <Navbar />
           <Toaster position="top-center" reverseOrder={false} />
           <div className="flex grow justify-center items-center">
@@ -30,6 +31,7 @@ function App() {
               <Route path="/offers/:id" element={<OfferDetail />} />
               <Route path="/offers/new" element={<OffertForm />} />
               <Route path="/offers/edit/:id" element={<OffertForm />} />
+              <Route path="/categories" element={<CategoryManager />} />
             </Routes>
           </div>
           <Footer />
