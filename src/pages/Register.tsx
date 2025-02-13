@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-
-
-export default function Register() {
-  return (
-    <div>
-      
-    </div>
-  )
-}
-=======
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { AuthService } from "../services/authService";
 import User from "../models/User";
@@ -118,4 +107,3 @@ const Register: React.FC = () => {
 };
 
 export default Register;
->>>>>>> main

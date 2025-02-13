@@ -8,8 +8,5 @@ export default defineConfig({
     react(), 
     tailwindcss()
   ],
-<<<<<<< HEAD
 })
-=======
-})
->>>>>>> main
+
