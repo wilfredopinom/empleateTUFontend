@@ -1,7 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { AuthService } from '../services/authService'
+import { useAuth } from '../contexts/AuthContext'
 
 function Login() {
+
+
 
   const [form, setForm] = useState(
     {
@@ -10,14 +12,18 @@ function Login() {
     }
   )
   const [message, setMessage ] = useState('')
+  const {login} = useAuth()
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     // mensaje por post al api del backend
     try{
-      await AuthService.loginUser(form.email, form.password)
+      //await AuthService.loginUser(form.email, form.password) // backend
+      await login(form.email, form.password) // llamada al contexto
       console.log('login successfull')
       setMessage('login successfull')
+      console.log(form.email)
+
       // Redirigir a otra pagina (ofertas)
     }catch(error){
       const msg = error instanceof Error ? error.message : 'Error desconocido'
