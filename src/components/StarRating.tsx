@@ -1,6 +1,6 @@
 // src/components/StarRating.tsx
 import { useEffect, useState } from "react";
-import { RateService } from "../services/rate.Service";
+import { RateService } from "../services/rate.Services";
 import { IconStar, IconStarFilled } from "@tabler/icons-react";
 
 interface StarRatingProps {
